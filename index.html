@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ReTake</title>
-	<link rel="icon" href="/images/favicon.ico" type="image/icon">
-	<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-	<div class = "video">
-		<video id="vid" muted></video>
-	</div>
-	<div class="options">
-		<div class = "devices">
-			<select id=a></select>
-			<select id=b></select>
-		</div>
-		<div class = "commands">
-			<button onclick = stopsave() title = "Stops the Recording and Saves it">Stop and Save</button>
-			<button onclick = stopdel() title = "Stops the Recording and Deletes it">Stop and Delete</button>
-			<button onclick = save() title = "Downloads all Saved Videos">Save All Videos</button>
-		</div>  
-	</div>
-	  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReTake</title>
+    <link rel="icon" href="/static/images/favicon.ico" type="image/icon">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    
+	<div style="display: flex;flex-direction: row;">
+    <div id="videos" class="flexcolumn">
+      <button onclick=saveAll() title="Downloads all Saved Videos">Download All Videos</button>
+	  </div>
+    
+    <div class="flexcolumn">
+      <div class="video">
+        <video id="vid" muted></video>
+      </div>
+      <div class="options">
+        <div class="devices">
+          <select id=a></select>
+          <select id=b></select>
+        </div>
+        <div class="commands">
+          <button onclick=stopsave() title="Stops the Recording and Saves it">Stop and Save</button>
+          <button onclick=stopdel() title="Stops the Recording and Deletes it">Stop and Delete</button>
+        </div>
+      </div>
+    </div></div>
+  
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

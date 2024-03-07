@@ -16,14 +16,15 @@ body {
 	width: 100%;
 	height: 100%;
 
-	padding: 1vw;;
-
+	padding: 1vw;
 	display: flex;
 	justify-content: center;
-	flex-direction: column;
 	align-items: baseline;
 }
-
+.flexcolumn {
+	display: flex;
+	flex-direction: column;
+}
 /* Video View */
 
 .video {
@@ -85,6 +86,30 @@ body {
 }
 
 .commands button {
+	padding: 15px;
+
+	color: whitesmoke;
+
+	font-size: 15px;
+
+	cursor: pointer;
+
+	border-radius: 10px;
+	border-width: 0px;
+
+	background-color: #000042;
+}
+/* Video Saving Area */
+#videos {
+	border: 3px #000042 solid;
+	border-radius: 10px;
+	height: 50vh;
+	width: 40vh;
+	overflow: scroll;
+}
+
+
+.flexcolumn button, .saved_video button {
 	padding: 15px;
 
 	color: whitesmoke;

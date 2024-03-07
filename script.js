@@ -4,7 +4,7 @@ select2 = document.getElementById("b")
 devices = []
 videonum = 1
 
-blobs = []
+blobs = {}
 
 function start() {
 	if (window.stream) {
@@ -47,8 +47,29 @@ function start() {
 
 function stopsave() {
 	recorder.ondataavailable = function (e) {
-		blobs.push(e.data);
-		blobs[blobs.length - 1].type = 'video/mp4'
+		blobs[`vid${videonum}.mp4`] =e.data;
+		blobs[`vid${videonum}.mp4`].type = 'video/mp4'
+		
+		button = document.createElement('button')
+		button.innerHTML = 'Download ' +`vid${videonum}.mp4`
+		button.onclick = function(){
+			var url = URL.createObjectURL(blobs[this.id]);
+			
+			var a = document.createElement('a');
+			document.body.appendChild(a);
+			
+			a.style = 'display: none';
+			a.href = url;
+
+			a.download = this.id;
+			a.click();
+			a.outerHTML = ''
+			window.URL.revokeObjectURL(url);
+		}
+		button.className = "saved_video"
+		button.id = `vid${videonum}.mp4`
+		document.getElementById("videos").appendChild(button)
+		videonum += 1
 	};
 	recorder.stop()
 	start()
@@ -59,18 +80,19 @@ function stopdel() {
 	start()
 }
 
-function save() {
+function saveAll() {
 	for (i in blobs) {
 		var url = URL.createObjectURL(blobs[i]);
 		var a = document.createElement('a');
 		document.body.appendChild(a);
+		
 		a.style = 'display: none';
 		a.href = url;
-		a.download = `vid${videonum}.mp4`;
+		a.download = i;
 		a.click();
+		
 		a.outerHTML = ''
 		window.URL.revokeObjectURL(url);
-		videonum += 1
 	}
 }
 

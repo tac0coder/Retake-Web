@@ -18,7 +18,7 @@ function start() {
 					devices.push(a);
 					if (a.kind == "audioinput") {
 						select2.innerHTML += '<option value=' + a.deviceId + '>' + a.label + '</option>'
-					} else if (a.kind == "videoinput") {
+					} if (a.kind == "videoinput") {
 						select1.innerHTML += '<option value=' + a.deviceId + '>' + a.label + '</option>'
 					}
 				})
